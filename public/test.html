@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="theme/1/css/common.css">
+	<link rel="stylesheet" type="text/css" href="theme/1/css/style.css">
+	<link rel="stylesheet" type="text/css" href="theme/1/css/EditingArea.css">
+	<link rel="stylesheet" type="text/css" href="theme/1/css/table.css">
+	<link rel="stylesheet" type="text/css" href="theme/1/css/icon.css">
+	<link rel="stylesheet" type="text/css" href="theme/1/css/zy.css">
+	<script type="text/javascript" src="jquery-2.1.4/jquery.min.js"></script>
+</head>
+<body>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablea">
+        <tr>
+            <td align="center">年份</td>
+            <td align="left">
+                <div class="chose chose1">
+                  <a href="#" class="active3">全部</a>
+                  <a href="#">语文</a>
+                  <a href="#">数学</a>
+                  <a href="#">英语</a>
+                  <a href="#">政治</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+<script>
+	$(function(){
+		//alert();
+		$(".chose").on("click","a",function(){
+			//alert();
+			$(this).addClass("active3").siblings().removeClass("active3");
+			/*$.post("findAll",{'typeid':this.id},function(){
+
+			})*/
+		});
+	})
+</script>
