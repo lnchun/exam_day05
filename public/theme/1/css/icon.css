@@ -9,7 +9,8 @@
 	padding-left:25px;
 	cursor:pointer;}
 .icon_add{        /*注册、添加*/
-	background:url(../images/icon/icon_l_c.png) no-repeat;}
+	background:url(../images/icon/icon_l_c.png) no-repeat;
+}
 .icon_edit{        /*编辑、修改*/
 	background:url(../images/icon/icon_l_g.png) no-repeat;}
 .icon_setting{        /*设置*/

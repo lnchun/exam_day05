@@ -1,0 +1,277 @@
+<div class="editingarea">
+        <div class="c_flex"><span class="c_flexible"></span></div>
+        <div class="chosetitle"><a href="" class="deletetitle"></a></div>
+        <div class="Topictitle">添加题目</div>
+        <div class="c_editview">
+            <div class="Problem">
+                <div class="Attributetit" style="float: left;margin: 0 10px 0px 0px ">题目题干</div>
+                <form action="" class="Attributetit">
+                    类型<select name="type" id="" class="problemType" style="border: 0px;"></select>
+                    难易程度<select name="level" id="" class="problemLevel" style="border: 0px;"></select>
+                    方向<select name="department" id="" class="problemDepartment" style="border: 0px;"></select>
+                    知识点<select name="topic" id="" class="problemTopic" style="border: 0px;"></select>
+                </form>
+                <textarea class="Problemcontent" name="stem" style="clear:both;width: 1090px;height: 87px;"></textarea>
+            </div>
+            <div class="Answeroptions1">
+                <div class="Attributetit">答案选项<em>(通过勾选每个选项下面的框难吃时间点咳嗽打开)</em></div>
+                <div class="c_condition"><span class="icon_add"  style="float: left"><em class="icon_r">添加选项</em></span></div>
+                <div class="Answercontent">
+                      <div class="Answerpart">
+                         <div class="Answerpart_left">
+                             <p>A</p><span><input type="radio" name="answer"/></span>
+                         </div>
+                         <textarea class="Answerpart_right" name="choiceContent"></textarea>
+                         <div class="clear"></div>
+                      </div>
+                    <div class="Answerpart">
+                        <div class="Answerpart_left">
+                            <p>B</p><span><input type="radio"  name="answer"/></span>
+                        </div>
+                        <textarea class="Answerpart_right" name="choiceContent"></textarea>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="Answerpart">
+                        <div class="Answerpart_left">
+                            <p>C</p><span><input type="radio" name="answer" /></span>
+                        </div>
+                        <textarea class="Answerpart_right" name="choiceContent"></textarea>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="Answerpart">
+                        <div class="Answerpart_left">
+                            <p>D</p><span><input type="radio" name="answer" /></span>
+                        </div>
+                        <textarea class="Answerpart_right" name="choiceContent"></textarea>
+                        <div class="clear"></div>
+                    </div>
+                      <div class="clear"></div>
+                </div>
+            </div>
+            <div class="checkboxs" hidden="hidden">
+                <div class="Answeroptions" >
+                    <div class="Attributetit">答案选项<em>(通过勾选每个选项下面的框难吃时间点咳嗽打开)</em></div>
+                    <div class="c_condition"><span class="icon_add"><em class="icon_r" >添加选项</em></span></div>
+                    <div class="Answercontent">
+                        <div class="Answerpart">
+                             <div class="Answerpart_left">
+                                 <p>A</p><span><input type="checkbox" /></span>
+                             </div>
+                             <div class="Answerpart_right">
+                                 <textarea name="" id="" cols="50" rows="5"></textarea>
+                             </div>
+                             <div class="clear"></div>
+                        </div>
+                        <div class="Answerpart">
+                            <div class="Answerpart_left">
+                                <p>B</p><span><input type="checkbox" /></span>
+                            </div>
+                            <div class="Answerpart_right">
+                                <textarea name="" id="" cols="50" rows="5"></textarea>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="Answerpart">
+                            <div class="Answerpart_left">
+                                <p>C</p><span><input type="checkbox" /></span>
+                            </div>
+                            <div class="Answerpart_right">
+                                <textarea name="" id="" cols="50" rows="5"></textarea>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="Answerpart">
+                            <div class="Answerpart_left">
+                                <p>D</p><span><input type="checkbox" /></span>
+                            </div>
+                            <div class="Answerpart_right">
+                                <textarea name="" id="" cols="50" rows="5"></textarea>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                          <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="question_a" hidden="hidden">
+                <div class="Attributetit">答案</div>
+                <textarea name="" id="" cols="154" rows="6"></textarea>
+            </div>
+
+            <div class="Problem" >
+                <div class="Attributetit">答案解析</div>
+                <textarea class="Problemcontent" name="analysis" style=" width: 1090px;height: 87px;"></textarea>
+            </div>
+            <div class="Problem">
+                <div class="fistproblm"><span>1.</span><a href="#"></a></div>
+                <textarea class="Problemcontent" name="analysis"  style=" width: 1090px;height: 87px;"></textarea>
+            </div>
+            <div class="Problem">
+                <div class="fistproblm"><span>1.</span><a href="#"></a></div>
+                <textarea class="Problemcontent" name="analysis" style=" width: 1090px;height: 87px;"></textarea>
+            </div>
+            <div class="Problem">
+                <div class="fistproblm"><span>1.</span><a href="#"></a></div>
+                <textarea class="Problemcontent" name="analysis"  style=" width: 1090px;height: 87px;"></textarea>
+            </div>
+            
+         
+            
+            <div class="btn_left">
+                <span class="btnL"><em class="btnR saveContinue">保存并继续</em></span><span class="btnL saveClose"><em class="btnR">保存并关闭</em></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<script>
+$(function(){
+    //console.log("==========")
+    $(".deletetitle").on("click",function(){
+        $(".right").load("./load/showSubject.html");
+    });
+    $.getJSON("/exam/manager/getAllSubjectType",function(data){
+        //var item.name;
+        data.forEach(function(item,index){
+            //item.name=item.name;
+            //console.log(item);
+            //console.log(item.name);
+            var option=$("<option id='"+item.id+"' value='"+item.id+"'>"+item.realName+"<option>");
+            $(".Problem").children(1).children(".problemType").append(option);
+        });
+    });
+    $.getJSON("/exam/manager/getAllSubjectLevel",function(data){
+        data.forEach(function(item,index){
+            var option=$("<option id='"+item.id+"' value='"+item.id+"'>"+item.realName+"<option>");
+            $(".Problem").children(1).children(".problemLevel").append(option);
+        });
+    });
+    $.getJSON("/exam/manager/getAllDepartmentes",function(data){
+        data.forEach(function(item,index){
+            //console.log("item:",item);
+            var option=$("<option id='"+item.id+"' value='"+item.id+"''>"+item.name+"<option>");
+            $(".Problem").children(1).children(".problemDepartment").append(option);
+        });
+    });
+    $.getJSON("/exam/manager/getAllTopics",function(data){
+        data.forEach(function(item,index){
+            //console.log(item);
+            var option=$("<option id='"+item.id+"' value='"+item.id+"''>"+item.title+"<option>");
+            $(".Problem").children(1).children(".problemTopic").append(option);
+        });
+    });
+    
+    $(".Attributetit select[name='type']").off("change");
+    //当点击类型的select时，获取val,用来判断是单选，多选还是简答
+    $(".Attributetit select[name='type']").on("click",function(){
+        var val=$(this).val();
+        console.log(val);
+        switch(val){
+            case 1:
+                break;
+            case 2:
+                $(".Answeroptions1").attr("hidden","hidden");
+                $(".checkboxs").removeAttr("hidden");
+                break;
+            case 3:
+                $(".Answeroptions1").attr("hidden","hidden");
+                $(".checkboxs").attr("hidden","hidden");
+                $(".question_a").removeAttr("hidden");
+                $(".Problem").eq(1).attr("hidden","hidden");
+                $(".Problem").eq(2).attr("hidden","hidden");
+                $(".Problem").eq(3).attr("hidden","hidden");
+                break;
+        }
+    });
+    
+    $(".editingarea").on("submit",function(){
+        var type=$("select[name='type']").val();
+        var level=$("select[name='level']").val();
+        var department=$("select[name='department']").val();
+        var topic=$("select[name='topic']").val();
+        var stem=$("textarea[name='stem']").val();
+        var analysis=$("textarea[name='analysis']").val();
+        var choiceContents=new Array();
+        var correctChioces=new Array();
+        
+        $("textarea[name='choiceContent']").each(function(index,item){
+            choiceContents[index]=$(item).val();
+           // console.log(choiceContents[index]);
+        });
+
+        if(type==1){
+            $(":radio[name='answer']").each(function(index,item){
+                correctChioces[index]=$(item).prop('checked');
+            })
+        }else{
+            $(":checkbox[name='answer']").each(function(index,item){
+                correctChioces[index]=$(item).prop('checked');
+            })
+        }
+        var correct=[];
+        //correctChioces.forEach(function(item){
+            var newitem=Number(item);
+            correct.push(newitem);
+        });
+        console.log(correct);
+        var choiceContent = choiceContents.toString();
+        $.ajax("/exam/manager/saveSubject",{
+            method:"post",
+            data:{
+                "analysis":analysis,
+                "answer":choiceContent,
+                "checkState":"未审核",
+                "stem":stem,
+                "uploadTime":null,
+                "department_id":department,
+                "subjectLevel_id":level,
+                "subjectType_id":type,
+                "topic_id":topic,
+                
+                // "subject_id":17,
+            },
+            success:function(data){
+                console.log("data:",data);
+                $.ajax('exam/manager/saveAnswer',{
+                    method:"post",
+                    data:{
+                        "content1":choiceContents,
+                        "correct1":correct,
+                    },
+                    success:function(data1){
+                        console.log("data1:",data1);
+                    }
+                });
+            }
+        });
+        return false;
+    });
+
+
+    //analysis,answer,checkState,stem,uploadTime,department_id,subjectLevel_id,subjectType_id,topic_id
+    $(".saveContinue").off("click");
+    $(".saveContinue").on("click",function(){
+        $(".editingarea").trigger("submit");
+        $("textarea").val("");
+        $("input:checked").removeAttr('checked');
+    })
+});
+</script>
+<style>
+    .Problemcontent{
+        width: 1095px;
+        height: 87px;
+    }
+    .Answeroptions1 .Answerpart{
+        width: 500px;
+        float: left;
+        margin-bottom: 20px;
+    }
+   .Answerpart_right{
+        width: 350px;
+        height: 85px;
+        
+    }
+</style>
+
+<!-- $.getJSON()  $.get()  $.ajax -->

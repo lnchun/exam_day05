@@ -2,36 +2,43 @@ var express=require('express');
 var route=express.Router();
 var findDB=require('../db/findDB');
 var check=require('../model/check');
+var Subject=require('../model/Subject');
 require('babel-polyfill');
 
 route.get('/getAllSubjectType',function(req,resp){
-	//findAllInfo(sql,resp);
 	findDB.getAllSubjectType().then(function(data){
 		resp.send(data);
+		console.log(data);
 	}).catch(function(error){
 		resp.send(error);
 	})
 });
 
 route.get('/getAllSubjectLevel',function(req,resp){
+	
 	findDB.getAllSubjectLevel().then(function(data){
 		resp.send(data);
+		console.log(data);
 	}).catch(function(error){
 		resp.send(error);
 	})
 });
 
 route.get('/getAllDepartmentes',function(req,resp){
+	
 	findDB.getAllDepartmentes().then(function(data){
 		resp.send(data);
+		console.log(data);
 	}).catch(function(error){
 		resp.send(error);
 	})
 });
 
 route.get('/getAllTopics',function(req,resp){
+	
 	findDB.getAllTopics().then(function(data){
 		resp.send(data);
+		console.log(data);
 	}).catch(function(error){
 		resp.send(error);
 	})
@@ -76,6 +83,40 @@ route.post('/choiceSubject',function(req,resp){
 	var subject_id=queryInfo["subject_id"];
 	findDB.choiceSubject(subject_id).then(function(data){
 		resp.send(data);
+	}).catch(function(error){
+		resp.send(error);
+	});
+});
+
+route.post('/saveSubject',function(req,resp){
+	var queryInfo=req.body;
+	//var id=queryInfo["id"];
+	var analysis=queryInfo["analysis"]; 
+	var answer=queryInfo["answer"];
+	var checkState=queryInfo["checkState"];
+	var stem=queryInfo["stem"];
+	var uploadTime=queryInfo["uploadTime"];
+	var dep=queryInfo["department_id"];
+	var level=queryInfo["subjectLevel_id"];
+	var type=queryInfo["subjectType_id"];
+	var topic=queryInfo["topic_id"];
+	//var user=queryInfo["user_id"];
+	// var subject_id=queryInfo["subject_id"];
+
+	console.log(queryInfo);
+	findDB.saveSubject(analysis,answer,checkState,stem,
+		uploadTime,dep,level,type,topic).then(function(data){
+		resp.send(data);
+	}).catch(function(error){
+		resp.send(error);
+	});
+});
+route.post('/saveAnswer',function(req,resp){
+	var queryInfo=req.body;
+	var content=queryInfo["content1[]"];
+	var correct=queryInfo["correct1[]"];
+	findDB.saveAnswer(content,correct).then(function(data){
+		resp.end(JSON.stringify(data));
 	}).catch(function(error){
 		resp.send(error);
 	});

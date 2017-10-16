@@ -49,8 +49,12 @@
     </div>
 </div>
 <script type="text/javascript">
+$(function(){
+  $(".icon_add").on("click",function(){
+    $('.right').load('./load/addSubject.html');
+  })
   //types
-  $.getJSON("http://127.0.0.1:3000/exam/manager/getAllSubjectType",function(data){
+  $.getJSON("/exam/manager/getAllSubjectType",function(data){
     //console.log(data);
     var tr1=$("tr:hidden").clone().removeAttr("hidden");
     //console.log(tr);
@@ -73,7 +77,7 @@
   });
     
   //levels
-  $.getJSON("http://127.0.0.1:3000/exam/manager/getAllSubjectLevel",function(data){
+  $.getJSON("/exam/manager/getAllSubjectLevel",function(data){
     var tr1=$("tr:hidden").clone().removeAttr("hidden");
     tr1.children("td").eq(0).html("难易程度")
     tr1.find(".chose1").html("");
@@ -93,7 +97,7 @@
   });
 
   //departments
-  $.getJSON("http://127.0.0.1:3000/exam/manager/getAllDepartmentes",function(data){
+  $.getJSON("/exam/manager/getAllDepartmentes",function(data){
     var tr1=$("tr:hidden").clone().removeAttr("hidden");
     tr1.children("td").eq(0).html("方向")
     tr1.find(".chose1").html("");
@@ -113,7 +117,7 @@
   });
 
   //topics和展示数据
-  $.getJSON("http://127.0.0.1:3000/exam/manager/getAllTopics",function(data){
+  $.getJSON("/exam/manager/getAllTopics",function(data){
     tr1=$("tr:hidden").clone().removeAttr("hidden");
     tr1.children("td").eq(0).html("知识点")
     tr1.find(".chose1").html("");
@@ -129,6 +133,7 @@
       });
     });
     $(".tablea").append(tr1);
+
 
       var department='';
       var level='';
@@ -184,7 +189,7 @@
                     },
                     success:function(data){
                       //console.log(data);
-                      elment.parent().parent().attr("hidden","hidden");
+                      elment.parent().parent().empty();
                     }
               });
            });
@@ -192,162 +197,74 @@
         }
       })
     });
-
-    
-    
   });
-
+  
   var div;
 //展示题目的方法
-function showData(data){
-  $(".Catalogtitle").find("em").html(data.length);
-  $(".Catalog_rightnei:not(:hidden)").remove();
-  //console.log(data);
-  data.forEach(function(item,index){
-    //console.log(item);
-    div=$(".Catalog_rightnei:hidden").clone().removeAttr("hidden");
-    var id=item.id;
-    stemOne="<span id="+id+">"+item.stem+"</span><br>";
-    div.find(".Catalogcontentup").on("click",function(){
-      div.find(".Catalogcontentup").off("click");
-      if(item.subjectType_id==1||item.subjectType_id==2){
-        //展示选择题选项
-        $.ajax('/exam/manager/choiceSubject',{
-            method:"post",
-            data:{
-              "subject_id":id
-            },
-            success:function(data){
-              choices(data);
-            }
-        });
-      }else{
-        
-      }
-    })
-    div.find(".Catalogcontentup").append(stemOne);
-    $(".Catalog_right").append(div);
-  });
-}
-
-function choices(data){
-  data.forEach(function(item,index){
-    //console.log(item);
-    console.log(item.correct.data);
-    var id=item.id;
-    var arr1=item.correct.data;
-    var correct=arr1.pop(0);
-    switch(id){
-      case 1:
-        correct===1?stemTwo="<span style='color:red'>A</span>":stemTwo="<span>A</span>";
-        correct===1?stemThree="<span id="+id+" style='color:red'>."+item.content+"</span><br>":stemThree="<span id="+id+" >."+item.content+"</span><br>";
-        break;
-      case 2:
-        correct===1?stemTwo="<span style='color:red'>B</span>":stemTwo="<span>B</span>";
-        correct===1?stemThree="<span id="+id+" style='color:red'>."+item.content+"</span><br>":stemThree="<span id="+id+" >."+item.content+"</span><br>";
-        break;
-      case 3:
-        correct===1?stemTwo="<span style='color:red'>C</span>":stemTwo="<span>C</span>";
-        correct===1?stemThree="<span id="+id+" style='color:red'>."+item.content+"</span><br>":stemThree="<span id="+id+" >."+item.content+"</span><br>";
-        break;
-      case 4:
-        correct===1?stemTwo="<span style='color:red'>D</span>":stemTwo="<span>D</span>";
-        correct===1?stemThree="<span id="+id+" style='color:red'>."+item.content+"</span><br>":stemThree="<span id="+id+" >."+item.content+"</span><br>";
-        break;
-    }
-    //stemThree="<span id="+id+" >."+item.content+"</span><br>";
-     div.find(".Catalogcontentup").append(stemTwo,stemThree);
-  })
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /*
-$(function(){ 
-  tr1.find(".chose1").on("click","a",function(){
-        $(this).addClass("active3").siblings().removeClass("active3");
-  });
-});
-*/
-  /*$.getJSON('http://127.0.0.1:3000/exam/manager//subject',function(data){
+  function showData(data){
+    $(".Catalogtitle").find("em").html(data.length);
+    $(".Catalog_rightnei:not(:hidden)").remove();
     //console.log(data);
-    $(".Catalogcontent").children(".Catalogcontentup").html("");
     data.forEach(function(item,index){
-      var div2=$(".Catalogcontentup").html(item.stem);
+      //console.log(item);
+      div=$(".Catalog_rightnei:hidden").clone().removeAttr("hidden");
+      var id=item.id;
+      stemOne="<span id="+id+">"+item.stem+"</span><br>";
+      div.find(".Catalogcontentup").on("click",function(){
+        div.find(".Catalogcontentup").off("click");
+        if(item.subjectType_id==1||item.subjectType_id==2){
+          //展示选择题选项
+          $.ajax('/exam/manager/choiceSubject',{
+              method:"post",
+              data:{
+                "subject_id":id
+              },
+              success:function(data){
+                choices(data);
+              }
+          });
+        }else{
+          
+        }
+      })
+      div.find(".Catalogcontentup").append(stemOne);
+      $(".Catalog_right").append(div);
+    });
+  }
+
+  function choices(data){
+    //console.log(data);[]
+    data.forEach(function(item,index){
+      console.log(item);
+      
+      //console.log(item.correct);
+      var id=item.id;
+      //console.log(id);
+      var correct=item.correct;
+      switch(id){
+        case 1:
+          correct===1?stemTwo="<span style='color:red'>A</span>":stemTwo="<span>A</span>";
+          correct===1?stemThree="<span id="+id+" style='color:red'>."+item.content+"</span><br>":stemThree="<span id="+id+" >."+item.content+"</span><br>";
+          break;
+        case 2:
+          correct===1?stemTwo="<span style='color:red'>B</span>":stemTwo="<span>B</span>";
+          correct===1?stemThree="<span id="+id+" style='color:red'>."+item.content+"</span><br>":stemThree="<span id="+id+" >."+item.content+"</span><br>";
+          break;
+        case 3:
+          correct===1?stemTwo="<span style='color:red'>C</span>":stemTwo="<span>C</span>";
+          correct===1?stemThree="<span id="+id+" style='color:red'>."+item.content+"</span><br>":stemThree="<span id="+id+" >."+item.content+"</span><br>";
+          break;
+        case 4:
+          correct===1?stemTwo="<span style='color:red'>D</span>":stemTwo="<span>D</span>";
+          correct===1?stemThree="<span id="+id+" style='color:red'>."+item.content+"</span><br>":stemThree="<span id="+id+" >."+item.content+"</span><br>";
+          break;
+      }
+      
+       div.find(".Catalogcontentup").append(stemTwo,stemThree);
     })
-    $(".Catalogcontent").append(div2);
-  });
-  */
+  }
 
-  
-
-
-
-/*
-  $.getJSON("../theme/json/levels.json",function(data){
-    //tr=>tabal
-    var tr2=$('<tr class="level1"></tr>');
-    $(".tablea").append(tr2);
-    //td2=>tr
-    var td2=$('<td class="center level2"></td>');
-    $(".level1").append(td2);
-    $(".level2").html("难易程度");
-    //td2_1=>tr
-    var td2_1=('<td class="level3"></td>');
-    $('.level1').append(td2_1);
-    //div=>td2_1
-    var div=('<div class="chose chose2"></div>');
-    $('.level3').append(div);
-    $(".chose2").html('');
-    
-    data.forEach(function(item,index){
-      if(index==0){
-        var a=$('<a href="#" class="active3">'+item.realName+'</a>');
-      }else{
-         var a=$('<a href="#" >'+item.realName+'</a>');
-      }
-      $(".chose2").append(a);
-    });
-  });
-  
- 
-  $.getJSON("../theme/json/departmentes.json",function(data){
-    var tr3=$('<tr class="department"></tr>');
-    $(".tablea").append(tr3);
-
-    var td3=$("<td class='center department1'></td>");
-    $(".department").append(td3);
-    
-    $(".department1").html("方向");
-    
-    var td3_1=$('<td class="department2"></td>');
-    $(".department").append(td3_1);
-    var div1=$('<div class="chose chose3"></div>');
-    $(".department2").append(div1);
-    $(".chose3").html('');
-
-    data.forEach(function(item,index){
-      if(index==0){
-        var a=$('<a href="#" class="active3">'+item.name+'</a>');
-      }else{
-        var a=$('<a href="*">'+item.name+'</a>')
-      }
-      $(".chose3").append(a);
-    });
-  });
-*/
+});
 
 
 

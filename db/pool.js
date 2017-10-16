@@ -36,7 +36,7 @@ function execute(sql){
 			});
 		}).catch(function(err){
 			reject(err);
-		}).finally(function(){a
+		}).finally(function(){
 			if(connection){
 				connection.release();
 				console.log('release finally');
